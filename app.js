@@ -17,6 +17,12 @@ function onReady() {
 
     function deleteToDo () {
          this.closest('li').remove();
+         for(var i = 0; i < toDos.length; i++){
+             if(toDos[i].title === this.closest('li').class){
+                 toDos.splice(i,1);
+                 //alert("DELETE");
+             }
+        }     
     }
 
     addToDoForm.addEventListener('submit', event => {
@@ -37,7 +43,7 @@ function onReady() {
             deletebutton.value = 'Remove';
             deletebutton.innerHTML = 'X';
             newLi.textContent = toDo.title;
-            newLi.id = toDo.title;
+            newLi.class = toDo.title;
             toDoList.appendChild(newLi);
             newLi.appendChild(checkbox);
             newLi.appendChild(deletebutton);
